@@ -1,0 +1,100 @@
+﻿@model SmithASP.ViewModels.WorkoutViewModels.WorkoutCreationViewModel
+
+<h2 class="ui dividing header">New Workout</h2>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateWorkout" class="ui form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="field">
+                <label asp-for="WorkoutName" class="control-label"></label>
+                <input asp-for="WorkoutName" class="form-control" />
+                <span asp-validation-for="WorkoutName" class="text-danger"></span>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label asp-for="Duration" class="control-label"></label>
+                    <input asp-for="Duration" type="time" class="form-control" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <br /><br />
+            <h3 class="ui dividing header">Exercise List</h3>
+            <div class="two fields">
+                <div class="field">
+                    <table id="ExerciseTable" class="ui celled striped table">
+                        <thead>
+                            <tr>
+                                <th>Sequence</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Sets</th>
+                                <th>Reps</th>
+                                <th>Weight</th>
+                                <th>Rest Time</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="field">
+                    <div class="ui segment">
+                        <label>Name</label>
+                        <select class="ui dropdown">
+                            @foreach (Exercise e in Model.allExercises)
+                            {
+                                <option value="@e.Name">@e.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="ui segment">
+                        <label>Type</label>
+                        <select class="ui dropdown">
+                            <option value="Cardio">Cardio</option>
+                            <option value="Weight Lifting">Weight Lifting</option>
+                            <option value="Cross Fitness">Cross Fitness</option>
+                        </select>
+                    </div>
+                    <div class="ui segment">
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Sets</label><input type="text" placeholder="Number of Sets" />
+                            </div>
+                            <div class="field">
+                                <label>Reps</label><input type="text" placeholder="Number of Reps" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui segment">
+                        <label>Weight</label><input type="text" placeholder="Weight in pounds" />
+                    </div>
+                    <div class="ui segment">
+                        <label>Rest Time</label><input type="time" />
+                    </div>
+                    <button id="addExercise" type="button" class="ui button blue">Add Exercise</button>
+                </div>
+            </div>
+            <br />
+            <div class="ui segment">
+                <div class="field">
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" name="SaveWorkout" asp-for="SaveWorkout" />
+                        <label>Save to profile workouts?</label>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

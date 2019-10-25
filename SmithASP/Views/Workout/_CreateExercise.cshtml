@@ -1,0 +1,29 @@
+﻿@model SmithASP.ViewModels.WorkoutViewModels.ExerciseViewModel;
+
+<form asp-controller="Workout" asp-action="CreateExercise">
+    <h3>Exercise Creator</h3>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <table id="CreateExerciseTable">
+        <tr>
+            <td><input asp-for="Name" class="form-control" placeholder="Exercise Name" /></td>
+            <td><input type="submit" value="Create" class="Submit" /></td>
+        </tr>
+        <tr>
+            <td>
+                <select id="MuscleGroup">
+                    @foreach (MuscleGroup m in Model.MuscleGroups)
+                    {
+                        <option value="@m.MuscleGroupId">@m.Name</option>
+                    }
+                </select>
+            </td>
+            <td><button type="button" id="AddMuscleGroup">Add Muscle</button></td>
+        </tr>
+    </table>
+    <h4 class="underline">Muscle Groups</h4>
+    <table id="ExerciseMuscleGroupTable"></table>
+    <script src="~/lib/CreateExercise.js"></script>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</form>
+

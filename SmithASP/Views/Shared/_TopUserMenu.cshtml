@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="topMenu">
+        <ul>
+            <li class="menuMessage">Hello @UserManager.GetUserName(User)</li>
+            <li>
+                <form asp-controller="Home" asp-action="LogOff" method="post" id="logoutForm" class="item">
+                    <button type="submit" class="ui button blue">Log Off</button>
+                </form>
+            </li>
+            <li><a href="/Workout/index" class="ui button blue">Exercise</a></li>
+        </ul>
+    </div>
+}
+else
+{
+    <div class="topMenu">
+        <ul>
+            <li><a href="/Home/index">Login</a></li><li><a href="/Home/Register">Register</a></li><li><a href="/Home/ResetPassword">Reset Password</a></li>
+        </ul>
+    </div>
+}

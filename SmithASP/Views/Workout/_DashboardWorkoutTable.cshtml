@@ -1,0 +1,32 @@
+﻿@model SmithASP.ViewModels.WorkoutViewModels.ScheduledWorkoutViewModel
+@*
+
+*@
+
+<table class="ui celled table">
+    <tr>
+        <th>Workout</th>
+        <th>Date</th>
+        <th>Duration</th>
+        <th>Description</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @*if (Model != null)
+    {
+        @foreach (var w in Model.ScheduledWorkouts)
+        {
+            <tr>
+                <th>@w.Workout.Name</th>
+                <th></th>
+                <th></th>
+                <th>@w.Workout.Description</th>
+                <th><form asp-controller="Workout" asp-action="View" asp-route="@w.Id"><button class="ui button" type="submit">View</button></form></th>
+                <th><form asp-controller="Workout" asp-action="Edit" asp-route="@w.Id"><button class="ui button" type="submit">Edit</button></form></th>
+                <th><form asp-controller="Workout" asp-action="Delete" asp-route="@w.Id"><button class="ui button" type="submit">Delete</button></form></th>
+            </tr>
+        }
+    }
+        *@
+</table>

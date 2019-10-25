@@ -1,0 +1,14 @@
+﻿@model EncryptionMethodViewModel
+@{
+    ViewData["Title"] = "Caesar";
+}
+
+    <div>
+        <h2>Create A Cryptogram</h2>
+        @using (Html.BeginForm("Select_type", "Crypto", FormMethod.Post))
+        {
+
+            @Html.DropDownList("type", Model.MyMethods);
+            <input class="submit" type="submit" value="submit" />
+        }
+    </div>

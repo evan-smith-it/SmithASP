@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SmithASP.ViewModels.WorkoutViewModels.ExerciseViewModelV2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Exercise
+            </th>
+            <th>
+                Muscle Groups
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Exercise.Name
+                </td>
+                <td>
+                    @foreach(MuscleGroup m in item.MuscleGroups)
+                    {
+                        @m.Name
+                    }
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

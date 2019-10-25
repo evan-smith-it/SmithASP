@@ -1,0 +1,38 @@
+﻿@model SmithASP.ViewModels.WorkoutViewModels.DashboardViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@if (SignInManager.IsSignedIn(User))
+{
+    <h1>Welcome to your exercise buddy!</h1>
+    <br />
+    <div class="WorkoutPanel">
+        <h2>Workouts</h2>
+        <div class="ScheduledWorkouts">
+            <h3>Your Schedule</h3>
+            @await Html.PartialAsync("_DashboardWorkoutTable", Model.ScheduledWorkouts)
+        </div>
+        <div class="ScheduleWorkoutFromExisting">
+            <form asp-controller="Workout" asp-action="AddExistingWorkout">
+                <button class="ui button">Add Saved Workout</button>
+            </form>
+        </div>
+        <form asp-controller="Workout" asp-action="CreateWorkout"><button class="ui button">Add New Workout</button></form>
+    </div>
+
+
+    <div class="ExercisePanel">
+        <div class="PanelSection">
+            @await Html.PartialAsync("_TopExercises", Model.Exercises)
+        </div>
+        <div class="PanelSection">
+            @await Html.PartialAsync("_CreateExercise", Model.ExerciseViewModel)
+        </div>
+    </div>
+
+}
+else
+{
+    @await Component.InvokeAsync("Login")
+    <h1>Please login or <a href="/Home/Register">register</a> an account to use this feature.</h1>
+}

@@ -1,0 +1,16 @@
+﻿@model SmithASP.Models.Cryptogram;
+@{
+    ViewData["Title"] = "Caesar";
+}
+
+<form asp-controller="Crypto" asp-action="Caesar_Output" method="post" role="form">
+    <label asp-for="message" placeholder="Cleartext Message">Message</label>
+    <input asp-for="message" class="form-control" />
+    <span asp-validation-for="message"></span>
+    <br />
+    <label asp-for="key">Key</label>
+    <input asp-for="key" placeholder="Encryption Key Number" class="form-control" />
+    <span asp-validation-for="key"></span>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

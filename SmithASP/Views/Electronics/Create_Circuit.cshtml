@@ -1,0 +1,24 @@
+﻿@model  Circuit
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<form asp-controller="Circuit" asp-action="Create_Circuit" method="post" role="form">
+    <label asp-for="SourceVolts" placeholder="3">Source Volts</label>
+    <input asp-for="SourceVolts" class="form-control" />
+    <span asp-validation-for="SourceVolts"></span>
+    <br />
+    <label asp-for="Current">Current</label>
+    <input asp-for="Current" placeholder="Circuit Current" class="form-control" />
+    <span asp-validation-for="Current"></span>
+    <br />
+    <label asp-for="TotalResistance">Resistance</label>
+    <input asp-for="TotalResistance" placeholder="Total Resistance" class="form-control" />
+    <span asp-validation-for="TotalResistance"></span>
+    <br />
+    <label asp-for="ComponentCount">Number of Components</label>
+    <input asp-for="ComponentCount" placeholder="Component Count" class="form-control" />
+    <span asp-validation-for="ComponentCount"></span>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
